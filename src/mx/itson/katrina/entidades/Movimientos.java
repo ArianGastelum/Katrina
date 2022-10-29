@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package katrina.newpackage;
+package mx.itson.katrina.entidades;
 
 import java.util.Date;
-import katrina.newpackage1.Tipo;
+import mx.itson.katrina.enumeradores.Tipo;
 
 /**
  *
@@ -16,6 +16,7 @@ public class Movimientos {
     private Date fecha;
     private double cantidad;
     private Tipo tipo;
+    
 
     public String getDescripcion() {
         return descripcion;

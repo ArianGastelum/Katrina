@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package katrina.newpackage;
+package mx.itson.katrina.entidades;
 
 import com.google.gson.Gson;
 import java.util.List;
@@ -13,17 +13,11 @@ import java.util.List;
  */
 
 public class Cuenta {
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    
     
    private Cliente cliente;
-   private int cuenta;
-   private int clabe;
+   private String cuenta;
+   private String clabe;
    private String moneda;
    private List<Movimientos> movimientos;
    public Cuenta deserealizar(String json){
@@ -40,19 +34,19 @@ public class Cuenta {
    }
   
 
-    public int getCuenta() {
+    public String getCuenta() {
         return cuenta;
     }
 
-    public void setCuenta(int cuenta) {
+    public void setCuenta(String cuenta) {
         this.cuenta = cuenta;
     }
 
-    public int getClabe() {
+    public String getClabe() {
         return clabe;
     }
 
-    public void setClabe(int clabe) {
+    public void setClabe(String clabe) {
         this.clabe = clabe;
     }
 
@@ -72,7 +66,13 @@ public class Cuenta {
         this.movimientos = movimientos;
     }
 
-    
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
    
    
    

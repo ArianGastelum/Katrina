@@ -7,12 +7,17 @@ package mx.itson.katrina.ui;
 import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.text.DateFormat;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import static java.util.Arrays.sort;
+import java.util.Locale;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
-import katrina.newpackage.Cuenta;
-import katrina.newpackage.Movimientos;
-import katrina.newpackage1.Tipo;
-import katrina.newpackage.Cliente;
+import mx.itson.katrina.entidades.Cuenta;
+import mx.itson.katrina.entidades.Movimientos;
+import mx.itson.katrina.enumeradores.Tipo;
+import mx.itson.katrina.entidades.Cliente;
 
 /**
  *
@@ -38,7 +43,6 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -47,7 +51,6 @@ public class Main extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
         lblRFC = new javax.swing.JLabel();
         lblDomicilio = new javax.swing.JLabel();
         lblCiudad = new javax.swing.JLabel();
@@ -59,14 +62,15 @@ public class Main extends javax.swing.JFrame {
         lblCuenta = new javax.swing.JLabel();
         lblClabe = new javax.swing.JLabel();
         lblMoneda = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        jcbMes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 24)); // NOI18N
         jLabel1.setText("ESTADO DE CUENTA");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        jLabel2.setText("Nombre:");
 
         jLabel3.setText("RFC:");
 
@@ -101,11 +105,9 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblMovimientos);
 
-        lblCuenta.setText("jLabel11");
+        jLabel11.setText("Nombre:");
 
-        lblClabe.setText("jLabel11");
-
-        lblMoneda.setText("jLabel11");
+        jcbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,45 +122,39 @@ public class Main extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addGap(0, 19, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 841, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(lblNombre))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel10))
-                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDomicilio)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblCiudad)
+                                        .addGap(664, 664, 664)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblCiudad)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 654, Short.MAX_VALUE)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel9)
-                                                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                                    .addComponent(lblProducto, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblDomicilio)
-                                                .addGap(567, 567, 567)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblClabe)
-                                            .addComponent(lblCuenta)
-                                            .addComponent(lblMoneda)))
-                                    .addComponent(lblCP)
-                                    .addComponent(lblRFC))))
+                                            .addComponent(jLabel9)
+                                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(lblProducto, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                    .addComponent(jcbMes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblClabe)
+                                    .addComponent(lblCuenta)
+                                    .addComponent(lblMoneda)))
+                            .addComponent(lblCP)
+                            .addComponent(lblRFC)
+                            .addComponent(lblNombre))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(303, 303, 303))
         );
@@ -168,11 +164,12 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombre)
-                    .addComponent(lblProducto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblProducto)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(lblNombre)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -203,18 +200,21 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblCP))
-                .addGap(51, 51, 51)
+                .addGap(14, 14, 14)
+                .addComponent(jcbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 43, Short.MAX_VALUE))
+                .addGap(0, 63, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try{     
+       try{  
+           
         JFileChooser fileChooser = new JFileChooser();
 fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
 
@@ -229,17 +229,44 @@ if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
 
     Cuenta cuenta = new Cuenta().deserealizar(contenido);
    
-    lblNombre.setText(cliente.getNombre());
-      lblRFC.setText(cuenta.getRfc());
+      lblNombre.setText(cuenta.getCliente().getNombre());
+      lblRFC.setText(cuenta.getCliente().getRfc());
       lblClabe.setText(String.valueOf(cuenta.getClabe()));  
-      lblDomicilio.setText(cuenta.getDomicilio());  
-      lblCiudad.setText(cuenta.getCiudad());  
-      lblCP.setText(String.valueOf(cuenta.getCp()));  
+      lblDomicilio.setText(cuenta.getCliente().getDomicilio());  
+      lblCiudad.setText(cuenta.getCliente().getCiudad());  
+      lblCP.setText(String.valueOf(cuenta.getCliente().getCp()));
+      lblMoneda.setText(cuenta.getMoneda());
+      lblCuenta.setText(cuenta.getCuenta());
+      
+      DefaultTableModel table = (DefaultTableModel) tblMovimientos.getModel();
+          double subTotal = 0;
+          DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+          
+          cuenta.getMovimientos().sort((m1, m2) -> m1.getFecha().compareTo(m2.getFecha()) );
+           Locale local = new Locale("es", "MX");
+         NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(local);
+         
+
+      for(Movimientos a : cuenta.getMovimientos()){
+      
+        
+        if(a.getTipo() == Tipo.Depósito){
+        subTotal += a.getCantidad();
+            
+            table.addRow(new Object []{a.getDescripcion(), formatoFecha.format(a.getFecha()), "", formatoMoneda.format(a.getCantidad()), formatoMoneda.format(subTotal) });
+        
+      
+        
+        }else{
+        if(a.getTipo() == Tipo.Retiro){
+            subTotal -= a.getCantidad();
+            
+            table.addRow(new Object []{a.getDescripcion(), formatoFecha.format(a.getFecha()),formatoMoneda.format(a.getCantidad()), "", formatoMoneda.format(subTotal) });
       
       
-}}catch(Exception ex){
+}}}}}catch(Exception ex){
        
-       System.out.print("Ocurrio un error: " + ex.getMessage());
+       System.out.print("Ocurrió un error");
        
    }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -280,7 +307,7 @@ if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -289,6 +316,7 @@ if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JComboBox<String> jcbMes;
     private javax.swing.JLabel lblCP;
     private javax.swing.JLabel lblCiudad;
     private javax.swing.JLabel lblClabe;
