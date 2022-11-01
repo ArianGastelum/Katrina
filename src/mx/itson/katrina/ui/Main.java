@@ -213,7 +213,8 @@ public class Main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       try{  
+       //Búsqueda y selección del archivo
+        try{  
            
         JFileChooser fileChooser = new JFileChooser();
 fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
@@ -226,41 +227,44 @@ if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
     byte archivoBytes[]=Files.readAllBytes(archivo.toPath());
     
     String contenido = new String(archivoBytes, StandardCharsets.UTF_8);
-
+// deserealización y asignación de atributos de cuenta
     Cuenta cuenta = new Cuenta().deserealizar(contenido);
    
       lblNombre.setText(cuenta.getCliente().getNombre());
       lblRFC.setText(cuenta.getCliente().getRfc());
-      lblClabe.setText(String.valueOf(cuenta.getClabe()));  
+      lblClabe.setText(cuenta.getClabe());  
       lblDomicilio.setText(cuenta.getCliente().getDomicilio());  
       lblCiudad.setText(cuenta.getCliente().getCiudad());  
-      lblCP.setText(String.valueOf(cuenta.getCliente().getCp()));
+      lblCP.setText(cuenta.getCliente().getCp());
       lblMoneda.setText(cuenta.getMoneda());
       lblCuenta.setText(cuenta.getCuenta());
-      
+     //Asignación de movimientos dentro de una tabla
       DefaultTableModel table = (DefaultTableModel) tblMovimientos.getModel();
           double subTotal = 0;
-          DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
           
+          DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+          //Determina el orden temporal de los movimientos
           cuenta.getMovimientos().sort((m1, m2) -> m1.getFecha().compareTo(m2.getFecha()) );
-           Locale local = new Locale("es", "MX");
+          //Asigna el idioma y país para el formato de la moneda
+          Locale local = new Locale("es", "MX");
          NumberFormat formatoMoneda = NumberFormat.getCurrencyInstance(local);
          
-
+     //Recorrido de cada movimiento
       for(Movimientos a : cuenta.getMovimientos()){
       
-        
+     //Evalúa si es tipo depósito y suma al subtotal   
         if(a.getTipo() == Tipo.Depósito){
         subTotal += a.getCantidad();
-            
+            //Agrega una nueva fila con la información proporcionada
             table.addRow(new Object []{a.getDescripcion(), formatoFecha.format(a.getFecha()), "", formatoMoneda.format(a.getCantidad()), formatoMoneda.format(subTotal) });
         
       
         
         }else{
+            //Evalúa si es tipo retiro y resta al subtotal  
         if(a.getTipo() == Tipo.Retiro){
             subTotal -= a.getCantidad();
-            
+            //Agrega una nueva fila con la información proporcionada
             table.addRow(new Object []{a.getDescripcion(), formatoFecha.format(a.getFecha()),formatoMoneda.format(a.getCantidad()), "", formatoMoneda.format(subTotal) });
       
       

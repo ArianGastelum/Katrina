@@ -15,7 +15,7 @@ public class Cliente {
    private String rfc;
    private String domicilio;
    private String ciudad;
-   private int cp;
+   private String cp;
 
     public String getNombre() {
         return nombre;
@@ -49,13 +49,15 @@ public class Cliente {
         this.ciudad = ciudad;
     }
 
-    public int getCp() {
+    public String getCp() {
         return cp;
     }
 
-    public void setCp(int cp) {
+    public void setCp(String cp) {
         this.cp = cp;
     }
+
+    
 
 
       

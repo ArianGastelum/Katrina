@@ -7,8 +7,8 @@ package mx.itson.katrina.enumeradores;
 import com.google.gson.annotations.SerializedName;
 
 /**
- *
- * @author stafa
+ * Evalúa el tipo de movimiento realizado.
+ * 
  */
 public enum Tipo {
     @SerializedName("1")

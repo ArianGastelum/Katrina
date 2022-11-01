@@ -8,8 +8,8 @@ import java.util.Date;
 import mx.itson.katrina.enumeradores.Tipo;
 
 /**
- *
- * @author stafa
+ * 
+ * 
  */
 public class Movimientos {
     private String descripcion;
