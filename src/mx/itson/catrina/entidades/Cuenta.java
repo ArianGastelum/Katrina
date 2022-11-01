@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mx.itson.katrina.entidades;
+package mx.itson.catrina.entidades;
 
 import com.google.gson.Gson;
 import java.util.List;
 
 /**
  *
- * 
+ * contiene los datos de una cuenta bancaria
  */
 
 public class Cuenta {
@@ -21,14 +21,15 @@ public class Cuenta {
    private String moneda;
    private List<Movimientos> movimientos;
    public Cuenta deserealizar(String json){
-    Cuenta c = new Cuenta();   
+   
+       Cuenta c = new Cuenta();   
    try{
         c = new Gson().fromJson(json, Cuenta.class);
        
        
    }catch(Exception ex){
      
-       System.out.print("Ocurrio un error: " + ex.getMessage());
+       System.out.print("Ocurrió un error");
    }
    return c;
    }

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package mx.itson.katrina.ui;
+package mx.itson.catrina.ui;
 
 import java.io.File;
 import java.nio.charset.StandardCharsets;
@@ -14,14 +14,14 @@ import static java.util.Arrays.sort;
 import java.util.Locale;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
-import mx.itson.katrina.entidades.Cuenta;
-import mx.itson.katrina.entidades.Movimientos;
-import mx.itson.katrina.enumeradores.Tipo;
-import mx.itson.katrina.entidades.Cliente;
+import mx.itson.catrina.entidades.Cuenta;
+import mx.itson.catrina.entidades.Movimientos;
+import mx.itson.catrina.enumeradores.Tipo;
+import mx.itson.catrina.entidades.Cliente;
 
 /**
- *
- * @author stafa
+ *En esta clase se representa visualmente en un JFrame los datos guardados de la cuenta bancaria
+ * 
  */
 public class Main extends javax.swing.JFrame {
 
@@ -64,7 +64,6 @@ public class Main extends javax.swing.JFrame {
         lblMoneda = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
-        jcbMes = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,8 +106,6 @@ public class Main extends javax.swing.JFrame {
 
         jLabel11.setText("Nombre:");
 
-        jcbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todo", "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,8 +142,7 @@ public class Main extends javax.swing.JFrame {
                                             .addComponent(jLabel9)
                                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
                                             .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(lblProducto, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                    .addComponent(jcbMes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(lblProducto, javax.swing.GroupLayout.Alignment.TRAILING))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblClabe)
@@ -200,9 +196,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(lblCP))
-                .addGap(14, 14, 14)
-                .addComponent(jcbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
+                .addGap(51, 51, 51)
                 .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,16 +210,18 @@ public class Main extends javax.swing.JFrame {
        //Búsqueda y selección del archivo
         try{  
            
-        JFileChooser fileChooser = new JFileChooser();
+          //Método de busqueda de archivo
+            JFileChooser fileChooser = new JFileChooser();
+          //Indica el inicio donde va a buscar
 fileChooser.setCurrentDirectory(new File(System.getProperty("user.home")));
-
+          
 if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
-    
+    //Obtener el archivo seleccionado
     File archivo = fileChooser.getSelectedFile();
  
- 
+ //Transforma el Json
     byte archivoBytes[]=Files.readAllBytes(archivo.toPath());
-    
+    //Transforma el Json
     String contenido = new String(archivoBytes, StandardCharsets.UTF_8);
 // deserealización y asignación de atributos de cuenta
     Cuenta cuenta = new Cuenta().deserealizar(contenido);
@@ -243,7 +239,7 @@ if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
           double subTotal = 0;
           
           DateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-          //Determina el orden temporal de los movimientos
+          //Acomoda los movimientos comparando fechas
           cuenta.getMovimientos().sort((m1, m2) -> m1.getFecha().compareTo(m2.getFecha()) );
           //Asigna el idioma y país para el formato de la moneda
           Locale local = new Locale("es", "MX");
@@ -320,7 +316,6 @@ if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JComboBox<String> jcbMes;
     private javax.swing.JLabel lblCP;
     private javax.swing.JLabel lblCiudad;
     private javax.swing.JLabel lblClabe;

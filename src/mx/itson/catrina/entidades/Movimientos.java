@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package mx.itson.katrina.entidades;
+package mx.itson.catrina.entidades;
 
 import java.util.Date;
-import mx.itson.katrina.enumeradores.Tipo;
+import mx.itson.catrina.enumeradores.Tipo;
 
 /**
- * 
+ * Contiene el registro de los movimientos bancarios de una cuenta
  * 
  */
 public class Movimientos {

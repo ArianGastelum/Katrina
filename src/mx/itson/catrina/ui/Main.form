@@ -61,7 +61,6 @@
                                           <Component id="lblProducto" alignment="1" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jcbMes" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -136,9 +135,7 @@
                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="jcbMes" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
               <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="367" max="-2" attributes="0"/>
@@ -281,30 +278,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblNombre">
-    </Component>
-    <Component class="javax.swing.JComboBox" name="jcbMes">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="13">
-            <StringItem index="0" value="Todo"/>
-            <StringItem index="1" value="Enero"/>
-            <StringItem index="2" value="Febrero"/>
-            <StringItem index="3" value="Marzo"/>
-            <StringItem index="4" value="Abril"/>
-            <StringItem index="5" value="Mayo"/>
-            <StringItem index="6" value="Junio"/>
-            <StringItem index="7" value="Julio"/>
-            <StringItem index="8" value="Agosto"/>
-            <StringItem index="9" value="Septiembre"/>
-            <StringItem index="10" value="Octubre"/>
-            <StringItem index="11" value="Noviembre"/>
-            <StringItem index="12" value="Diciembre"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
     </Component>
   </SubComponents>
 </Form>
